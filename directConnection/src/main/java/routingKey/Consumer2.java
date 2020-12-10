@@ -1,4 +1,4 @@
-package fanout;
+package routingKey;
 
 import com.rabbitmq.client.*;
 import org.junit.Test;
@@ -18,11 +18,13 @@ public class Consumer2 {
         Connection connection = RabbitmqUtil.getConnection();
         Channel channel = connection.createChannel();
 
-        channel.exchangeDeclare("test", BuiltinExchangeType.FANOUT);
+        channel.exchangeDeclare("test", BuiltinExchangeType.DIRECT);
         // 从通道中获取一个临时队列
         String queue = channel.queueDeclare().getQueue();
         // 把临时队列和交换机绑定
-        channel.queueBind(queue, "test", "");
+        channel.queueBind(queue, "test", "warn");
+        channel.queueBind(queue, "test", "debug");
+        channel.queueBind(queue, "test", "error");
 
         channel.basicConsume(queue, true, new DefaultConsumer(channel) {
             @Override

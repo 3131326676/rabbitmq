@@ -2,7 +2,7 @@ package fanout;
 
 import com.rabbitmq.client.*;
 import org.junit.Test;
-import utils.RabbitmUtil;
+import utils.RabbitmqUtil;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ public class Consumer1 {
 
     @Test
     public void consumeMessage() throws Exception {
-        Connection connection = RabbitmUtil.getConnection();
+        Connection connection = RabbitmqUtil.getConnection();
         Channel channel = connection.createChannel();
 
         channel.exchangeDeclare("test", BuiltinExchangeType.FANOUT);

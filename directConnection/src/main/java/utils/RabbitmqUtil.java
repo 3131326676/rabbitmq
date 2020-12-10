@@ -10,7 +10,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * @version 1.0
  */
-public class RabbitmUtil {
+public class RabbitmqUtil {
 
     private static ConnectionFactory connectionFactory;
 

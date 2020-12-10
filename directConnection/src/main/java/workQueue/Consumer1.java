@@ -2,7 +2,7 @@ package workQueue;
 
 import com.rabbitmq.client.*;
 import org.junit.Test;
-import utils.RabbitmUtil;
+import utils.RabbitmqUtil;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Consumer1 {
     @Test
     public void consumeMessage() throws Exception {
-        Connection connection = RabbitmUtil.getConnection();
+        Connection connection = RabbitmqUtil.getConnection();
         final Channel channel = connection.createChannel();
 
         channel.queueDeclare("work", true, false, false, null);
@@ -32,6 +32,6 @@ public class Consumer1 {
         });
 
         System.in.read();
-        RabbitmUtil.closeChannelAndConnect(channel, connection);
+        RabbitmqUtil.closeChannelAndConnect(channel, connection);
     }
 }

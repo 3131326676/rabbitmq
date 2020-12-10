@@ -5,7 +5,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.MessageProperties;
 import org.junit.Test;
-import utils.RabbitmUtil;
+import utils.RabbitmqUtil;
 
 /**
  * @version 1.0
@@ -14,7 +14,7 @@ public class Producer {
 
     @Test
     public void sendMessage() throws Exception {
-        Connection connection = RabbitmUtil.getConnection();
+        Connection connection = RabbitmqUtil.getConnection();
         // 创建一个信道
         Channel channel = connection.createChannel();
         // 绑定队列
@@ -36,7 +36,7 @@ public class Producer {
         channel.basicPublish("", "hello", MessageProperties.PERSISTENT_TEXT_PLAIN, "hello rabbitmq".getBytes());
 
         // 关闭通道和连接
-        RabbitmUtil.closeChannelAndConnect(channel, connection);
+        RabbitmqUtil.closeChannelAndConnect(channel, connection);
         System.out.println("消息发送成功");
     }
 }

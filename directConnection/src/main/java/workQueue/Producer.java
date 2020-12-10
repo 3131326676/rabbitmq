@@ -3,7 +3,7 @@ package workQueue;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import org.junit.Test;
-import utils.RabbitmUtil;
+import utils.RabbitmqUtil;
 
 /**
  * @author qumingbo
@@ -14,7 +14,7 @@ public class Producer {
 
     @Test
     public void sendMessage() throws Exception {
-        Connection connection = RabbitmUtil.getConnection();
+        Connection connection = RabbitmqUtil.getConnection();
 
         Channel channel = connection.createChannel();
 
@@ -24,7 +24,7 @@ public class Producer {
             channel.basicPublish("","work",null, String.valueOf(i).getBytes());
         }
 
-        RabbitmUtil.closeChannelAndConnect(channel,connection);
+        RabbitmqUtil.closeChannelAndConnect(channel,connection);
         System.out.println("消息发送成功");
     }
 }

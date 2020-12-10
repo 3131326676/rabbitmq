@@ -2,7 +2,7 @@ package direct;
 
 import com.rabbitmq.client.*;
 import org.junit.Test;
-import utils.RabbitmUtil;
+import utils.RabbitmqUtil;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Consumer {
     @Test
     public void sendMessage() throws Exception {
-        Connection connection = RabbitmUtil.getConnection();
+        Connection connection = RabbitmqUtil.getConnection();
 
         // 创建一个信道
         Channel channel = connection.createChannel();

@@ -4,7 +4,7 @@ import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import org.junit.Test;
-import utils.RabbitmUtil;
+import utils.RabbitmqUtil;
 
 /**
  * @author qumingbo
@@ -14,7 +14,7 @@ import utils.RabbitmUtil;
 public class Producer {
     @Test
     public void sendMessage() throws Exception {
-        Connection connection = RabbitmUtil.getConnection();
+        Connection connection = RabbitmqUtil.getConnection();
 
         Channel channel = connection.createChannel();
 
@@ -23,7 +23,7 @@ public class Producer {
 
 
         channel.basicPublish("test","",null,"广播".getBytes());
-        RabbitmUtil.closeChannelAndConnect(channel,connection);
+        RabbitmqUtil.closeChannelAndConnect(channel,connection);
         System.out.println("发送完成");
     }
 }
