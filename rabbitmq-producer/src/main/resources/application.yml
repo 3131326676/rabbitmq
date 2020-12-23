@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: producer
+  rabbitmq:
+    port: 5672
+    username: qmb
+    password: smd521314
+    virtual-host: /learn
+    host: 39.96.54.49
+server:
+  port: 8081

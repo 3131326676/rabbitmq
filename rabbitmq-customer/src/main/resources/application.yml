@@ -1,0 +1,10 @@
+server:
+  port: 8082
+
+spring:
+  rabbitmq:
+    host: 39.96.54.49
+    port: 5672
+    username: qmb
+    password: smd521314
+    virtual-host: /learn
